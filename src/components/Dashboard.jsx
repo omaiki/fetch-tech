@@ -1,17 +1,21 @@
 import { useAuth } from "../AuthContext";
+import DogFeed from "./DogFeed";
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
 
-  if (!user) {
-    return <p>Please log in</p>;
-  }
-
   return (
     <div>
-      <h2>Welcome, {user.name}!</h2>
-      <p>Email: {user.email}</p>
-      <button onClick={logout}>Logout</button>
+      <h2>Dashboard</h2>
+      {user ? (
+        <>
+          <p>Welcome, {user.name}!</p>
+          <button onClick={logout}>Logout</button>
+          <DogFeed />
+        </>
+      ) : (
+        <p>Please log in.</p>
+      )}
     </div>
   );
 };
