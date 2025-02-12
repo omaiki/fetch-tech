@@ -5,14 +5,17 @@ const PetFilter = ({ breeds, onFilterChange }) => {
   const [zipCode, setZipCode] = useState("");
   const [ageMin, setAgeMin] = useState("");
   const [ageMax, setAgeMax] = useState("");
+  const [sortField, setSortField] = useState("breed"); // Default sort by breed
+  const [sortOrder, setSortOrder] = useState("asc"); // Default ascending order
 
   // Apply filters
   const applyFilters = () => {
     const filters = {
-      breeds: selectedBreed ? [selectedBreed] : [], // Convert to array
+      breeds: selectedBreed ? [selectedBreed] : [],
       zipCodes: zipCode ? [zipCode] : [],
       ageMin: ageMin ? parseInt(ageMin, 10) : undefined,
       ageMax: ageMax ? parseInt(ageMax, 10) : undefined,
+      sort: `${sortField}:${sortOrder}`, // Sort query format
     };
 
     onFilterChange(filters);
@@ -34,6 +37,7 @@ const PetFilter = ({ breeds, onFilterChange }) => {
         </select>
       </div>
 
+   
       <div>
         <h4>Zip Code</h4>
         <input
@@ -43,6 +47,7 @@ const PetFilter = ({ breeds, onFilterChange }) => {
           onChange={(e) => setZipCode(e.target.value)}
         />
       </div>
+
 
       <div>
         <h4>Age Range</h4>
@@ -58,6 +63,19 @@ const PetFilter = ({ breeds, onFilterChange }) => {
           value={ageMax}
           onChange={(e) => setAgeMax(e.target.value)}
         />
+      </div>
+
+      <div>
+        <h4>Sort By</h4>
+        <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
+          <option value="breed">Breed</option>
+          <option value="name">Name</option>
+          <option value="age">Age</option>
+        </select>
+        <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
       </div>
 
       <button onClick={applyFilters}>Apply Filters</button>

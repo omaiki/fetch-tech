@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PetFilter from "./PetFilter";
-import "./DogFeed.css";
+import "./DogFeed.css"; // Import styles
 
 const DogFeed = () => {
   const API_BASE_URL = "https://frontend-take-home-service.fetch.com";
@@ -8,7 +8,13 @@ const DogFeed = () => {
   const [dogs, setDogs] = useState([]); // Holds full dog objects
   const [pagination, setPagination] = useState({ next: null, prev: null });
   const [error, setError] = useState(null);
-  const [filters, setFilters] = useState({ breeds: [], zipCodes: [], ageMin: "", ageMax: "" });
+  const [filters, setFilters] = useState({
+    breeds: [],
+    zipCodes: [],
+    ageMin: "",
+    ageMax: "",
+    sort: "breed:asc", // Default sorting
+  });
 
   // Fetch all breeds on mount
   useEffect(() => {
@@ -42,6 +48,7 @@ const DogFeed = () => {
       if (filters.zipCodes.length) queryParams.append("zipCodes", filters.zipCodes.join(","));
       if (filters.ageMin) queryParams.append("ageMin", filters.ageMin);
       if (filters.ageMax) queryParams.append("ageMax", filters.ageMax);
+      if (filters.sort) queryParams.append("sort", filters.sort);
 
       const response = await fetch(`${API_BASE_URL}/dogs/search?${queryParams.toString()}`, {
         method: "GET",
@@ -87,7 +94,7 @@ const DogFeed = () => {
     }
   };
 
-  // Handle filter changes
+  // Handle filter & sorting changes
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
     fetchDogs(); // Fetch updated dogs list
