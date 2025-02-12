@@ -7,6 +7,7 @@ const PetFilter = ({ breeds, onFilterChange }) => {
   const [ageMax, setAgeMax] = useState("");
   const [sortField, setSortField] = useState("breed"); // Default sort by breed
   const [sortOrder, setSortOrder] = useState("asc"); // Default ascending order
+  const [size, setSize] = useState(25); // Default size
 
   // Apply filters
   const applyFilters = () => {
@@ -16,6 +17,7 @@ const PetFilter = ({ breeds, onFilterChange }) => {
       ageMin: ageMin ? parseInt(ageMin, 10) : undefined,
       ageMax: ageMax ? parseInt(ageMax, 10) : undefined,
       sort: `${sortField}:${sortOrder}`, // Sort query format
+      size: parseInt(size, 10), // Number of results per page
     };
 
     onFilterChange(filters);
@@ -24,6 +26,7 @@ const PetFilter = ({ breeds, onFilterChange }) => {
   return (
     <div>
       <h3>Filter Dogs</h3>
+
 
       <div>
         <h4>Breed</h4>
@@ -36,8 +39,6 @@ const PetFilter = ({ breeds, onFilterChange }) => {
           ))}
         </select>
       </div>
-
-   
       <div>
         <h4>Zip Code</h4>
         <input
@@ -47,7 +48,6 @@ const PetFilter = ({ breeds, onFilterChange }) => {
           onChange={(e) => setZipCode(e.target.value)}
         />
       </div>
-
 
       <div>
         <h4>Age Range</h4>
@@ -65,6 +65,7 @@ const PetFilter = ({ breeds, onFilterChange }) => {
         />
       </div>
 
+    
       <div>
         <h4>Sort By</h4>
         <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
@@ -75,6 +76,17 @@ const PetFilter = ({ breeds, onFilterChange }) => {
         <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
+        </select>
+      </div>
+
+  
+      <div>
+        <h4>Results Per Page</h4>
+        <select value={size} onChange={(e) => setSize(e.target.value)}>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
         </select>
       </div>
 
