@@ -1,13 +1,14 @@
 import { useState } from "react";
+import "./PetFilter.css";
 
 const PetFilter = ({ breeds, onFilterChange }) => {
   const [selectedBreed, setSelectedBreed] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [ageMin, setAgeMin] = useState("");
   const [ageMax, setAgeMax] = useState("");
-  const [sortField, setSortField] = useState("breed"); // Default sort by breed
-  const [sortOrder, setSortOrder] = useState("asc"); // Default ascending order
-  const [size, setSize] = useState(25); // Default size
+  const [sortField, setSortField] = useState("breed");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [size, setSize] = useState(25);
 
   // Apply filters
   const applyFilters = () => {
@@ -16,20 +17,37 @@ const PetFilter = ({ breeds, onFilterChange }) => {
       zipCodes: zipCode ? [zipCode] : [],
       ageMin: ageMin ? parseInt(ageMin, 10) : undefined,
       ageMax: ageMax ? parseInt(ageMax, 10) : undefined,
-      sort: `${sortField}:${sortOrder}`, // Sort query format
-      size: parseInt(size, 10), // Number of results per page
+      sort: `${sortField}:${sortOrder}`,
+      size: parseInt(size, 10),
     };
 
     onFilterChange(filters);
   };
 
+  // Clear filters
+  const clearFilters = () => {
+    setSelectedBreed("");
+    setZipCode("");
+    setAgeMin("");
+    setAgeMax("");
+    setSortField("breed");
+    setSortOrder("asc");
+    setSize(25);
+
+    onFilterChange({
+      breeds: [],
+      zipCodes: [],
+      ageMin: undefined,
+      ageMax: undefined,
+      sort: "breed:asc",
+      size: 25,
+    });
+  };
+
   return (
-    <div>
-      <h3>Filter Dogs</h3>
-
-
-      <div>
-        <h4>Breed</h4>
+    <div className="pet-filter-container">
+      <div className="pet-filter-field">
+        <label>Breed:</label>
         <select value={selectedBreed} onChange={(e) => setSelectedBreed(e.target.value)}>
           <option value="">Select a Breed</option>
           {breeds.map((breed) => (
@@ -39,8 +57,9 @@ const PetFilter = ({ breeds, onFilterChange }) => {
           ))}
         </select>
       </div>
-      <div>
-        <h4>Zip Code</h4>
+
+      <div className="pet-filter-field">
+        <label>Zip Code:</label>
         <input
           type="text"
           placeholder="Enter Zip Code"
@@ -49,14 +68,18 @@ const PetFilter = ({ breeds, onFilterChange }) => {
         />
       </div>
 
-      <div>
-        <h4>Age Range</h4>
+      <div className="pet-filter-field">
+        <label>Age Min:</label>
         <input
           type="number"
           placeholder="Min Age"
           value={ageMin}
           onChange={(e) => setAgeMin(e.target.value)}
         />
+      </div>
+
+      <div className="pet-filter-field">
+        <label>Age Max:</label>
         <input
           type="number"
           placeholder="Max Age"
@@ -65,23 +88,25 @@ const PetFilter = ({ breeds, onFilterChange }) => {
         />
       </div>
 
-    
-      <div>
-        <h4>Sort By</h4>
+      <div className="pet-filter-field">
+        <label>Sort By:</label>
         <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
           <option value="breed">Breed</option>
           <option value="name">Name</option>
           <option value="age">Age</option>
         </select>
+      </div>
+
+      <div className="pet-filter-field">
+        <label>Order:</label>
         <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
       </div>
 
-  
-      <div>
-        <h4>Results Per Page</h4>
+      <div className="pet-filter-field">
+        <label>Results Per Page:</label>
         <select value={size} onChange={(e) => setSize(e.target.value)}>
           <option value="10">10</option>
           <option value="25">25</option>
@@ -90,7 +115,10 @@ const PetFilter = ({ breeds, onFilterChange }) => {
         </select>
       </div>
 
-      <button onClick={applyFilters}>Apply Filters</button>
+      <div className="filter-buttons">
+        <button className="pet-filter-button" onClick={applyFilters}>Apply Filters</button>
+        <button className="clear-filter-button" onClick={clearFilters}>Clear Filters</button>
+      </div>
     </div>
   );
 };
