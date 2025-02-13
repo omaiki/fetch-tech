@@ -5,8 +5,9 @@ URL - https://fetch-tech.vercel.app/
 
 # Running locally
 
-npm install
-npm run dev
+- git clone repository
+- npm install
+- npm run dev
 
 
 # React + Vite setup
