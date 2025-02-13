@@ -55,3 +55,35 @@
     background-color: #0056b3;
   }
   
+
+  /* favorite button */
+
+  /* Base button styling */
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adds spacing between heart and text */
+  transition: transform 0.2s ease-in-out;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+
+.heart-icon::before {
+  content: "♡"; 
+  font-size: 20px;
+  color: gray;
+  transition: color 0.3s ease-in-out;
+}
+
+.favorited .heart-icon::before {
+  content: "♥"; 
+  color: red;
+}

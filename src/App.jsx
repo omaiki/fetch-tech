@@ -1,22 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navigation";
+import DogFeed from "./components/DogFeed";
+import FavoritesList from "./components/FavoritesList";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import './App.css'
+import { useAuth } from "./AuthContext";
 
-
-function App() {
+const App = () => {
+  const { user } = useAuth();
 
   return (
-    <>
-      <div>
-      <h1>React Authentication</h1>
-      <Login />
-      <Dashboard />
-    </div>
-    </>
-  )
-}
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={user ? (
+            <>
+              <Dashboard />
+              <DogFeed />
+            </>
+          ) : (
+            <Login />
+          )}
+        />
+        <Route path="/favorites" element={user ? <FavoritesList /> : <Login />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;

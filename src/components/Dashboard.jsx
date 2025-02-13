@@ -1,8 +1,9 @@
 import { useAuth } from "../AuthContext";
-import DogFeed from "./DogFeed";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -10,8 +11,12 @@ const Dashboard = () => {
       {user ? (
         <>
           <p>Welcome, {user.name}!</p>
-          <button onClick={logout}>Logout</button>
-          <DogFeed />
+          <button onClick={() => {
+            logout();
+            navigate("/");
+          }}>
+            Logout
+          </button>
         </>
       ) : (
         <p>Please log in.</p>
