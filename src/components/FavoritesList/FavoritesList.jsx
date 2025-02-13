@@ -18,6 +18,7 @@ const FavoritesList = () => {
         <p>No Favorites yet</p>
       ) : (
         <>
+          <DogMatch favorites={favorites} />
           <div className="dog-grid">
             {favorites.map((dog) => (
               <div key={dog.id} className="dog-card">
@@ -29,7 +30,7 @@ const FavoritesList = () => {
               </div>
             ))}
           </div>
-          <DogMatch favorites={favorites} />
+          
         </>
       )}
     </div>

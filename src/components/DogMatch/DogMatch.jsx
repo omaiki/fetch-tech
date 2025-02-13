@@ -5,7 +5,7 @@ import "./DogMatch.css";
 const DogMatch = ({ favorites }) => {
   const [match, setMatch] = useState(null);
 
-  // Pick rando dog from favorites - let's add some preference or geolocation logic here later 
+  // Pick rando dog from favorites - potentially add some preference or geolocation logic here in future 
   const findMatch = () => {
     if (favorites.length === 0) return;
     const randomIndex = Math.floor(Math.random() * favorites.length);

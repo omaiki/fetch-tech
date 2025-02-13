@@ -1,97 +1,107 @@
 /* Dog Feed styles */
-
 .dog-feed-container {
-    width: 100%;
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Dog Grid Layout */
-  .dog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-  }
-  
-  /* Dog Cards */
-  .dog-card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-    
-    
-    .dog-card:hover {
-      transform: scale(1.05);
-    }
-    
-    .dog-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    
-    .dog-card h4 {
-      margin: 10px 0 5px;
-    }
-    
-    .pagination-buttons {
-      margin-top: 20px;
-    }
-    
-    .pagination-buttons button {
-      padding: 8px 12px;
-      margin: 5px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    .pagination-buttons button:hover {
-      background-color: #0056b3;
-    }
-    
-  
-    /* favorite button */
-  
-    /* Base button styling */
-  .favorite-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Adds spacing between heart and text */
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .favorite-btn:hover {
-    transform: scale(1.1);
-  }
-  
-  
-  .heart-icon::before {
-    content: "♡"; 
-    font-size: 20px;
-    color: gray;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .favorited .heart-icon::before {
-    content: "♥"; 
-    color: red;
-  }
-  
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Dog Grid Layout */
+.dog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Dog Cards */
+.dog-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dog-card:hover {
+  transform: scale(1.05);
+}
+
+
+.dog-card img {
+  width: 100%;
+  max-width: 200px;
+  height: 200px; 
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.dog-card h4 {
+  margin: 10px 0 5px;
+}
+
+
+.pagination-buttons {
+  margin-top: 20px;
+}
+
+.pagination-buttons button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/* Favorite Button */
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 8px; 
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+}
+
+.favorite-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+
+.heart-icon::before {
+  content: "♡";
+  font-size: 20px;
+  color: gray;
+  transition: color 0.3s ease-in-out;
+}
+
+
+.favorited .heart-icon::before {
+  content: "♥";
+  color: red;
+}
