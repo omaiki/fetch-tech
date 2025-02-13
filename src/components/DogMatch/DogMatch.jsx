@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import "./DogMatch.css";
 
 const DogMatch = ({ favorites }) => {
@@ -28,6 +29,24 @@ const DogMatch = ({ favorites }) => {
       <button onClick={findMatch} className="match-btn">Find Match</button>
     </div>
   );
+};
+
+DogMatch.propTypes = {
+  favorites: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      breed: PropTypes.string.isRequired,
+      age: PropTypes.number.isRequired,
+      zip_code: PropTypes.string.isRequired,
+      img: PropTypes.string,
+    })
+  ),
+};
+
+
+DogMatch.defaultProps = {
+  favorites: [],
 };
 
 export default DogMatch;

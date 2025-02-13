@@ -1,4 +1,4 @@
-/* Basic Navbar Styles */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -9,7 +9,7 @@
     font-size: 18px;
   }
   
-  /* Left Side (Home, Favorites) */
+
   .nav-left a {
     margin-right: 15px;
     color: white;
@@ -21,7 +21,7 @@
     color: #ffcc00;
   }
   
-  /* Right Side (Login/Logout) */
+
   .nav-right {
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
     gap: 10px;
   }
   
-  /* Login Button */
+  /* Login  */
   .login-btn {
     color: white;
     background: none;
@@ -45,7 +45,7 @@
     color: #ffcc00;
   }
   
-  /* Logout Button */
+  /* Logout */
   .logout-btn {
     background-color: #ff4757;
     color: white;

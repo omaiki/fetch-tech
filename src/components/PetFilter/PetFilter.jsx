@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import "./PetFilter.css";
 
 const PetFilter = ({ breeds, onFilterChange }) => {
@@ -121,6 +122,16 @@ const PetFilter = ({ breeds, onFilterChange }) => {
       </div>
     </div>
   );
+};
+
+
+PetFilter.propTypes = {
+  breeds: PropTypes.arrayOf(PropTypes.string),
+  onFilterChange: PropTypes.func.isRequired,
+};
+
+PetFilter.defaultProps = {
+  breeds: [],
 };
 
 export default PetFilter;
