@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { useAuth } from "../AuthContext";
+// this component handles Authentication
 
-const Login = () => {
+import { useState } from "react";
+import { useAuth } from "../../AuthContext";
+
+const Authentication = () => {
   const { login } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -60,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Authentication;
