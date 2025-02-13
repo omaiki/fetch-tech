@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PetFilter from "./PetFilter";
+import PetFilter from "../PetFilter/PetFilter";
 import "./DogFeed.css";
 
 const DogFeed = () => {
